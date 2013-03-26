@@ -1,0 +1,94 @@
+From e2cfc13ee0d0dfa2762274fb3c5cbec4a7fb5b7e Mon Sep 17 00:00:00 2001
+From: Stephan Wirth <swirth@willowgarage.com>
+Date: Tue, 26 Mar 2013 14:17:34 -0700
+Subject: [PATCH 2/2] removed some targets, adapted install directory for
+ includes
+
+---
+ sm/CMakeLists.txt             |    7 +++++--
+ sm/lib/egsl/CMakeLists.txt    |    4 ++--
+ sm/lib/json-c/CMakeLists.txt  |    2 +-
+ sm/lib/options/CMakeLists.txt |    4 ++--
+ 4 files changed, 10 insertions(+), 7 deletions(-)
+
+diff --git a/sm/CMakeLists.txt b/sm/CMakeLists.txt
+index 19b9951..6ef90bd 100644
+--- a/sm/CMakeLists.txt
++++ b/sm/CMakeLists.txt
+@@ -76,6 +76,7 @@ SUBDIRS(csm)
+ 
+ 
+ 
++if(0)
+ ########### SM applications ########## 
+ 
+ MACRO(new_executable exec)
+@@ -134,6 +135,7 @@ TARGET_LINK_LIBRARIES(test_math_utils_sanity csm-static ${GSL_LIBRARIES})
+ ENABLE_TESTING()
+ ADD_TEST(test_math_utils_sanity test_math_utils_sanity)
+ 
++endif(0)
+ 
+ SET(csm_sources 
+ ./csm/clustering.c
+@@ -189,9 +191,10 @@ IF(CAIRO_FOUND)
+ SET(csm_sources ${csm_sources} csm/laser_data_cairo.c)
+ ENDIF(CAIRO_FOUND)
+ 
++ADD_DEFINITIONS(-w)
+ ADD_LIBRARY(csm-static STATIC ${csm_sources})
+ TARGET_LINK_LIBRARIES(csm-static ${csm_link_flags})
+-INSTALL(TARGETS csm-static ARCHIVE DESTINATION lib)
++#INSTALL(TARGETS csm-static ARCHIVE DESTINATION lib)
+ 
+ ADD_LIBRARY(csm SHARED ${csm_sources})
+ TARGET_LINK_LIBRARIES(csm ${csm_link_flags})
+@@ -211,7 +214,7 @@ INSTALL(PROGRAMS hsm_test00 DESTINATION bin)
+ ENDIF(COMPILE_HSM)
+ 
+ 
+-SUBDIRS(pkg-config)
++#SUBDIRS(pkg-config)
+ 
+ if(0)
+ #
+diff --git a/sm/lib/egsl/CMakeLists.txt b/sm/lib/egsl/CMakeLists.txt
+index 7daa48f..3c1afca 100644
+--- a/sm/lib/egsl/CMakeLists.txt
++++ b/sm/lib/egsl/CMakeLists.txt
+@@ -18,5 +18,5 @@ TARGET_LINK_LIBRARIES(egsl_test_allocation egsl  ${GSL_LIBRARIES})
+ # installation
+ 
+ FILE(GLOB headers "*.h")
+-INSTALL(FILES ${headers} DESTINATION include/egsl)
+-INSTALL(TARGETS egsl ARCHIVE DESTINATION lib)
++INSTALL(FILES ${headers} DESTINATION include/csm/egsl)
++#INSTALL(TARGETS egsl ARCHIVE DESTINATION lib)
+diff --git a/sm/lib/json-c/CMakeLists.txt b/sm/lib/json-c/CMakeLists.txt
+index a75dad6..e86de94 100644
+--- a/sm/lib/json-c/CMakeLists.txt
++++ b/sm/lib/json-c/CMakeLists.txt
+@@ -24,7 +24,7 @@ TARGET_LINK_LIBRARIES(test2 json-c)
+ 
+ 
+ FILE(GLOB json_headers "*.h")
+-INSTALL(FILES ${json_headers} DESTINATION include/json-c)
++INSTALL(FILES ${json_headers} DESTINATION include/csm/json-c)
+ 
+ 
+ INCLUDE(CheckIncludeFile)
+diff --git a/sm/lib/options/CMakeLists.txt b/sm/lib/options/CMakeLists.txt
+index 4292eb4..15171a0 100644
+--- a/sm/lib/options/CMakeLists.txt
++++ b/sm/lib/options/CMakeLists.txt
+@@ -8,5 +8,5 @@ TARGET_LINK_LIBRARIES(test_options options)
+ # installation
+ 
+ FILE(GLOB headers "*.h")
+-INSTALL(FILES ${headers} DESTINATION include/options)
+-INSTALL(TARGETS options ARCHIVE DESTINATION lib)
++INSTALL(FILES ${headers} DESTINATION include/csm/options)
++#INSTALL(TARGETS options ARCHIVE DESTINATION lib)
+-- 
+1.7.9.5
+

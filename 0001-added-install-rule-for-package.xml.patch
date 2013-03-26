@@ -1,0 +1,23 @@
+From 856a359aa5e5a2fd07b1b0c77137ca6c35af9843 Mon Sep 17 00:00:00 2001
+From: Stephan Wirth <swirth@willowgarage.com>
+Date: Tue, 26 Mar 2013 13:01:16 -0700
+Subject: [PATCH 1/2] added install rule for package.xml
+
+---
+ CMakeLists.txt |    3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 32297b8..c6d95e2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,3 +32,6 @@ ENDIF(HOSTNAME)
+ 
+ ENABLE_TESTING()
+ SUBDIRS(sm)
++
++INSTALL(FILES package.xml DESTINATION share/libcsm)
++
+-- 
+1.7.9.5
+
