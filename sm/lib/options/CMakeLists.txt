@@ -8,5 +8,5 @@ TARGET_LINK_LIBRARIES(test_options options)
 # installation
 
 FILE(GLOB headers "*.h")
-INSTALL(FILES ${headers} DESTINATION include/options)
-INSTALL(TARGETS options ARCHIVE DESTINATION lib)
+INSTALL(FILES ${headers} DESTINATION include/csm/options)
+#INSTALL(TARGETS options ARCHIVE DESTINATION lib)
