@@ -24,7 +24,7 @@ TARGET_LINK_LIBRARIES(test2 json-c)
 
 
 FILE(GLOB json_headers "*.h")
-INSTALL(FILES ${json_headers} DESTINATION include/json-c)
+INSTALL(FILES ${json_headers} DESTINATION include/csm/json-c)
 
 
 INCLUDE(CheckIncludeFile)
