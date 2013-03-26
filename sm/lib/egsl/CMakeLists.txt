@@ -18,5 +18,5 @@ TARGET_LINK_LIBRARIES(egsl_test_allocation egsl  ${GSL_LIBRARIES})
 # installation
 
 FILE(GLOB headers "*.h")
-INSTALL(FILES ${headers} DESTINATION include/csm/egsl)
-#INSTALL(TARGETS egsl ARCHIVE DESTINATION lib)
+INSTALL(FILES ${headers} DESTINATION include/egsl)
+INSTALL(TARGETS egsl ARCHIVE DESTINATION lib)
