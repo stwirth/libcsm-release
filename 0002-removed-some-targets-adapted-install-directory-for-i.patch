@@ -1,4 +1,4 @@
-From e2cfc13ee0d0dfa2762274fb3c5cbec4a7fb5b7e Mon Sep 17 00:00:00 2001
+From 5ec7129bfa7bf7f173f7fea716ed16990d40c716 Mon Sep 17 00:00:00 2001
 From: Stephan Wirth <swirth@willowgarage.com>
 Date: Tue, 26 Mar 2013 14:17:34 -0700
 Subject: [PATCH 2/2] removed some targets, adapted install directory for
