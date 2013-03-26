@@ -76,6 +76,7 @@ SUBDIRS(csm)
 
 
 
+if(0)
 ########### SM applications ########## 
 
 MACRO(new_executable exec)
@@ -134,6 +135,7 @@ TARGET_LINK_LIBRARIES(test_math_utils_sanity csm-static ${GSL_LIBRARIES})
 ENABLE_TESTING()
 ADD_TEST(test_math_utils_sanity test_math_utils_sanity)
 
+endif(0)
 
 SET(csm_sources 
 ./csm/clustering.c
@@ -189,9 +191,10 @@ IF(CAIRO_FOUND)
 SET(csm_sources ${csm_sources} csm/laser_data_cairo.c)
 ENDIF(CAIRO_FOUND)
 
+ADD_DEFINITIONS(-w)
 ADD_LIBRARY(csm-static STATIC ${csm_sources})
 TARGET_LINK_LIBRARIES(csm-static ${csm_link_flags})
-INSTALL(TARGETS csm-static ARCHIVE DESTINATION lib)
+#INSTALL(TARGETS csm-static ARCHIVE DESTINATION lib)
 
 ADD_LIBRARY(csm SHARED ${csm_sources})
 TARGET_LINK_LIBRARIES(csm ${csm_link_flags})
@@ -211,7 +214,7 @@ INSTALL(PROGRAMS hsm_test00 DESTINATION bin)
 ENDIF(COMPILE_HSM)
 
 
-SUBDIRS(pkg-config)
+#SUBDIRS(pkg-config)
 
 if(0)
 #
