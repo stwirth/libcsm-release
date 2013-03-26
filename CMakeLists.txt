@@ -32,3 +32,6 @@ ENDIF(HOSTNAME)
 
 ENABLE_TESTING()
 SUBDIRS(sm)
+
+INSTALL(FILES package.xml DESTINATION share/libcsm)
+
